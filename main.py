@@ -2,12 +2,12 @@ import streamlit as st
 import os
 import numpy as np
 from PIL import Image
-from skimage import io
+import matplotlib.pyplot as plt
 from sklearn.cluster import MiniBatchKMeans
 
 
 def get_compressed(image):
-  input_img = io.imread(image)
+  input_img = plt.imread(image)
   img_data = (input_img / 255.0).reshape(-1, 3)
   kmeans = MiniBatchKMeans(32).fit(img_data)
   k_colors = kmeans.cluster_centers_[kmeans.predict(img_data)]
