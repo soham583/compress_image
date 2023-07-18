@@ -19,13 +19,14 @@ title = st.title('Image compressor')
 st.subheader('Upload your image file')
 
 uploaded_file = st.file_uploader(label = "choose your image",type = ['jpg'])
-y = st.slider("select compress level(with '1' with highest compress)",1,100,32)
+
 if uploaded_file is not None:
     byte_data = uploaded_file.getvalue()
     st.image(Image.open(uploaded_file),width=750)
     file_size = len(byte_data)
     st.write("Filesize: ", round(file_size/1000),"KB" )
 
+y = st.slider("select compress level(with '1' with highest compress)",1,100,32)
 Compress = st.button('Compress image')
 
 if Compress:
