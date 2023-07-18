@@ -26,7 +26,7 @@ if uploaded_file is not None:
     file_size = len(byte_data)
     st.write("Filesize: ", round(file_size/1000),"KB" )
 
-y = st.slider("select compress level(with '1' with highest compress)",1,255,32)
+y = st.slider("",1,255,32)
 Compress = st.button('Compress image')
 
 if Compress:
