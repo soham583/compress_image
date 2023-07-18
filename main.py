@@ -6,7 +6,7 @@ import matplotlib.pyplot as plt
 from sklearn.cluster import MiniBatchKMeans
 
 
-def get_compressed(image):
+def get_compressed(image,y):
   input_img = plt.imread(image)
   img_data = (input_img / 255.0).reshape(-1, 3)
   kmeans = MiniBatchKMeans(32).fit(img_data)
@@ -19,6 +19,7 @@ title = st.title('Image compressor')
 st.subheader('Upload your image file')
 
 uploaded_file = st.file_uploader(label = "choose your image",type = ['jpg'])
+y = st.slider('select compress level(with '1' with highest compress)',1,100,32)
 if uploaded_file is not None:
     byte_data = uploaded_file.getvalue()
     st.image(Image.open(uploaded_file),width=750)
@@ -28,7 +29,7 @@ if uploaded_file is not None:
 Compress = st.button('Compress image')
 
 if Compress:
-    compressed_image =  get_compressed(uploaded_file)
+    compressed_image =  get_compressed(uploaded_file,y)
     img = Image.fromarray((compressed_image * 255).astype(np.uint8))
     st.image(img,width=750)
 
