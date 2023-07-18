@@ -24,7 +24,7 @@ if uploaded_file is not None:
     byte_data = uploaded_file.getvalue()
     st.image(Image.open(uploaded_file),width=750)
     file_size = len(byte_data)
-    st.write("Filesize: ", round(file_size/1000),"KB" )
+    st.write("Filesize: ", round(file_size/1024),"KB" )
 
 y = st.slider("",1,255,32)
 Compress = st.button('Compress image')
