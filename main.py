@@ -9,7 +9,7 @@ from sklearn.cluster import MiniBatchKMeans
 def get_compressed(image,y):
   input_img = plt.imread(image)
   img_data = (input_img / 255.0).reshape(-1, 3)
-  kmeans = MiniBatchKMeans(32).fit(img_data)
+  kmeans = MiniBatchKMeans(y).fit(img_data)
   k_colors = kmeans.cluster_centers_[kmeans.predict(img_data)]
   k_img = np.reshape(k_colors, (input_img.shape))
   return k_img
